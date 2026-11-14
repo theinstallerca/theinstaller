@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import { projects, categories, home } from '../site';
 const label = (k: string) => categories.find((c) => c.key === k)!.label;
 ---
-<Base title="Projects" description="Photos of curtain wall, storefront, office partition and window installation work by The Installer, Winnipeg.">
+<Base title="Glazing & Window Installation Projects in Winnipeg" description="Photos of curtain wall, storefront, office partition and window installation work by The Installer, Winnipeg.">
   <div class="container page-head">
     <h1>Projects</h1>
     <p>Some of our work in Winnipeg and Manitoba, finished and in progress.</p>
@@ -20,7 +20,7 @@ const label = (k: string) => categories.find((c) => c.key === k)!.label;
           return (
             <figure data-cats={p.cats.join(' ')}>
               <a href={`/images/projects/${p.img}.jpg`} data-caption={caption}>
-                <img src={`/images/projects/${p.img}-t.jpg`} alt={caption} width="800" height="600" loading="lazy" />
+                <img src={`/images/projects/${p.img}-t.jpg`} alt={`${caption} installed by The Installer, Winnipeg`} width="800" height="600" loading="lazy" />
               </a>
               <figcaption>{caption}</figcaption>
             </figure>

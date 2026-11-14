@@ -5,10 +5,30 @@ import { nav, phone, email, city, hours, services } from '../site';
 
 interface Props { title: string; description?: string; }
 const { title } = Astro.props;
-const description = Astro.props.description ?? 'Commercial glazing and door installation in Winnipeg, Manitoba: curtain wall, storefront and entrances, hollow metal doors and hardware, commercial windows.';
+const description = Astro.props.description ?? 'Commercial glazing contractor in Winnipeg, Manitoba. Installation of curtain wall, storefront and entrances, office partitions, commercial and apartment windows, and hollow metal doors.';
 const norm = (u: string) => u.replace(/\.html$/, '').replace(/\/$/, '') || '/';
 const current = norm(Astro.url.pathname);
-const canonical = `https://theinstaller.ca${current === '/' ? '' : current}`;
+const canonical = `https://theinstaller.ca${current === '/' ? '/' : current}`;
+const ogImage = 'https://theinstaller.ca/images/hero.jpg';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': 'https://theinstaller.ca/#business',
+  name: 'The Installer',
+  slogan: 'Dedicated to install',
+  description,
+  url: 'https://theinstaller.ca/',
+  telephone: phone.tel,
+  email,
+  image: ogImage,
+  address: { '@type': 'PostalAddress', addressLocality: 'Winnipeg', addressRegion: 'MB', addressCountry: 'CA' },
+  areaServed: [{ '@type': 'City', name: 'Winnipeg' }, { '@type': 'AdministrativeArea', name: 'Manitoba' }],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Installation services',
+    itemListElement: services.map((s) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: s.name, description: s.text, url: `https://theinstaller.ca/services#${s.key}` } })),
+  },
+};
 ---
 <!doctype html>
 <html lang="en">
@@ -18,6 +38,15 @@ const canonical = `https://theinstaller.ca${current === '/' ? '' : current}`;
     <title>{title} · The Installer</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="The Installer" />
+    <meta property="og:title" content={`${title} · The Installer`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="en_CA" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
   <body>
