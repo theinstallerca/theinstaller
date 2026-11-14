@@ -1,23 +1,24 @@
 ---
 import Base from '../layouts/Base.astro';
-import GlazingArt from '../components/GlazingArt.astro';
+import ServiceMedia from '../components/ServiceMedia.astro';
 import { services, home } from '../site';
 ---
-<Base title="Services" description="Curtain wall, storefront and entrances, hollow metal doors and hardware, and commercial window installation in Winnipeg.">
+<Base title="Services" description="Curtain wall, storefront and entrances, office partitions, commercial, fiberglass and PVC windows, and hollow metal door installation in Winnipeg.">
   <div class="container page-head">
     <h1>Services</h1>
-    <p>Installation of commercial glazing, doors and windows in Winnipeg and across Manitoba.</p>
+    <p>Installation of commercial glazing, windows and doors in Winnipeg and across Manitoba.</p>
   </div>
   <div>
     {services.map((s) => (
       <section class="section service" id={s.key}>
         <div class="container split">
-          <div class="media"><GlazingArt kind={s.key} /></div>
+          <div class="media"><ServiceMedia img={s.img} alt={s.name} large /></div>
           <div>
             <h2>{s.name}</h2>
             <p>{s.text}</p>
             <ul class="checklist">{s.list.map((x) => <li>{x}</li>)}</ul>
-            {s.key === 'windows' && <a href="https://thewindows.ca" class="more" rel="noopener">+ Residential PVC windows: thewindows.ca</a>}
+            {s.img && <p><a href={`/projects#${s.key}`} class="more">+ See photos</a></p>}
+            {s.key === 'pvc' && <a href="https://thewindows.ca" class="more" rel="noopener">+ Residential PVC windows: thewindows.ca</a>}
           </div>
         </div>
       </section>

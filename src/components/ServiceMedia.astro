@@ -1,0 +1,8 @@
+---
+import GlazingArt from './GlazingArt.astro';
+interface Props { img?: string; alt: string; large?: boolean; }
+const { img, alt, large = false } = Astro.props;
+---
+{img
+  ? <img src={`/images/projects/${img}${large ? '' : '-t'}.jpg`} alt={alt} loading="lazy" />
+  : <GlazingArt kind="doors" />}

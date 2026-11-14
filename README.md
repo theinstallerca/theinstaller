@@ -13,4 +13,4 @@ Edit, then `npm install` (first time) and `npm run build`, commit and push.
 Deploy: cPanel → Git Version Control → *Update from Remote* → *Deploy HEAD Commit*.
 `.cpanel.yml` copies `dist/` into the theinstaller.ca document root (`public_html`).
 
-Project photos go in `public/images/projects/` and are listed in `src/site.ts` (`projects`).
+Project photos: each photo is two files in `public/images/projects/` — `name.jpg` (large, max 1600 px) and `name-t.jpg` (800x600 tile). They are listed with their categories in `src/site.ts` (`projects`).

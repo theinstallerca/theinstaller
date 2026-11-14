@@ -1,21 +1,32 @@
 ---
 import Base from '../layouts/Base.astro';
-import GlazingArt from '../components/GlazingArt.astro';
-import { projects, home } from '../site';
+import { projects, categories, home } from '../site';
+const label = (k: string) => categories.find((c) => c.key === k)!.label;
 ---
-<Base title="Projects" description="Commercial glazing and door installation work by The Installer, Winnipeg.">
+<Base title="Projects" description="Photos of curtain wall, storefront, office partition and window installation work by The Installer, Winnipeg.">
   <div class="container page-head">
     <h1>Projects</h1>
-    <p>The kind of work we do. Project photos are being added.</p>
+    <p>Some of our work in Winnipeg and Manitoba, finished and in progress.</p>
   </div>
-  <section class="section">
-    <div class="container gallery">
-      {projects.map((p) => (
-        <figure>
-          {p.img ? <img src={p.img} alt={p.caption} loading="lazy" /> : <GlazingArt kind={p.kind} />}
-          <figcaption>{p.caption}</figcaption>
-        </figure>
-      ))}
+  <section class="section" style="padding-top: 2.5rem;">
+    <div class="container">
+      <div class="filters" role="group" aria-label="Filter photos by type of work">
+        <button class="active" data-cat="all" aria-pressed="true">All</button>
+        {categories.map((c) => <button data-cat={c.key} aria-pressed="false">{c.label}</button>)}
+      </div>
+      <div class="gallery">
+        {projects.map((p) => {
+          const caption = p.cats.map(label).join(' · ');
+          return (
+            <figure data-cats={p.cats.join(' ')}>
+              <a href={`/images/projects/${p.img}.jpg`} data-caption={caption}>
+                <img src={`/images/projects/${p.img}-t.jpg`} alt={caption} width="800" height="600" loading="lazy" />
+              </a>
+              <figcaption>{caption}</figcaption>
+            </figure>
+          );
+        })}
+      </div>
     </div>
   </section>
   <section class="section section-dark cta-band">
@@ -25,4 +36,47 @@ import { projects, home } from '../site';
       <a href="/contact" class="btn btn-light">Request a quote</a>
     </div>
   </section>
+
+  <dialog class="lightbox" aria-label="Photo">
+    <button class="lb-close" aria-label="Close">×</button>
+    <button class="lb-prev" aria-label="Previous photo">‹</button>
+    <img alt="" />
+    <button class="lb-next" aria-label="Next photo">›</button>
+    <p class="lb-cap"></p>
+  </dialog>
+
+  <script>
+    const figures = [...document.querySelectorAll<HTMLElement>('.gallery figure')];
+    const buttons = [...document.querySelectorAll<HTMLButtonElement>('.filters button')];
+    function select(cat: string, cats: string[] | null) {
+      buttons.forEach((b) => { const on = b.dataset.cat === cat; b.classList.toggle('active', on); b.setAttribute('aria-pressed', String(on)); });
+      figures.forEach((f) => { f.hidden = !!cats && !cats.some((c) => f.dataset.cats!.split(' ').includes(c)); });
+    }
+    buttons.forEach((b) => b.addEventListener('click', () => {
+      const cat = b.dataset.cat!;
+      select(cat, cat === 'all' ? null : [cat]);
+      history.replaceState(null, '', cat === 'all' ? location.pathname : '#' + cat);
+    }));
+    // Links from the Services page: "Commercial & fiberglass windows" opens both window categories.
+    const h = location.hash.slice(1);
+    if (h === 'windows') select('', ['windows', 'fiberglass']);
+    else if (h && buttons.some((b) => b.dataset.cat === h)) select(h, [h]);
+
+    const lb = document.querySelector<HTMLDialogElement>('.lightbox')!;
+    const lbImg = lb.querySelector('img')!;
+    const lbCap = lb.querySelector('.lb-cap')!;
+    let i = 0;
+    const visible = () => figures.filter((f) => !f.hidden).map((f) => f.querySelector('a')!);
+    function open(n: number) {
+      const list = visible(); i = (n + list.length) % list.length;
+      lbImg.src = list[i].href; lbImg.alt = list[i].dataset.caption!; lbCap.textContent = list[i].dataset.caption!;
+      if (!lb.open) lb.showModal();
+    }
+    figures.forEach((f) => f.querySelector('a')!.addEventListener('click', (e) => { e.preventDefault(); open(visible().indexOf(f.querySelector('a')!)); }));
+    lb.querySelector('.lb-close')!.addEventListener('click', () => lb.close());
+    lb.querySelector('.lb-prev')!.addEventListener('click', () => open(i - 1));
+    lb.querySelector('.lb-next')!.addEventListener('click', () => open(i + 1));
+    lb.addEventListener('click', (e) => { if (e.target === lb) lb.close(); });
+    lb.addEventListener('keydown', (e) => { if (e.key === 'ArrowLeft') open(i - 1); if (e.key === 'ArrowRight') open(i + 1); });
+  </script>
 </Base>
