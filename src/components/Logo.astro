@@ -2,4 +2,6 @@
 interface Props { tagline?: boolean; }
 const { tagline = false } = Astro.props;
 ---
-<span class="logo"><span class="logo-word"><b>the</b>installer</span>{tagline && <span class="logo-tag">Dedicated to install</span>}</span>
+{tagline
+  ? <img class="logo-img" src="/logo.svg?v=2" alt="theinstaller — Dedicated to install" />
+  : <span class="logo"><span class="logo-word"><b>the</b>installer</span></span>}

@@ -272,3 +272,4 @@ img.hero-bg { object-position: 70% 30%; opacity: 1; }
 img { -webkit-user-drag: none; user-select: none; -webkit-touch-callout: none; }
 .site-header .logo-word { font-size: 2.15rem; }
 .site-header .logo-tag { font-size: 0.74rem; margin-top: 0.25rem; }
+.site-header .brand img.logo-img { height: 50px; width: auto; }
