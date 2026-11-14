@@ -269,3 +269,4 @@ img.hero-bg { object-position: 70% 30%; opacity: 1; }
 .lb-cap { position: fixed; bottom: 14px; left: 0; right: 0; margin: 0; text-align: center; color: #ddd; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; }
 .gallery figure { background: none; }
 .gallery figure img { background: var(--bg-soft); }
+img { -webkit-user-drag: none; user-select: none; -webkit-touch-callout: none; }

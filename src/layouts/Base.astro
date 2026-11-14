@@ -89,6 +89,10 @@ const canonical = `https://theinstaller.ca${current === '/' ? '' : current}`;
         const open = nav!.classList.toggle('open');
         btn.setAttribute('aria-expanded', String(open));
       });
+      // Discourage saving photos: no right-click menu and no dragging on images.
+      const onImg = (e: Event) => { if ((e.target as HTMLElement).closest('img, .gallery a, .lightbox')) e.preventDefault(); };
+      document.addEventListener('contextmenu', onImg);
+      document.addEventListener('dragstart', onImg);
     </script>
   </body>
 </html>

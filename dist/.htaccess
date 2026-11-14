@@ -1,5 +1,13 @@
 # Serve /about as about.html, etc.
 RewriteEngine On
+
+# Hotlink protection: other websites cannot display our photos straight from this server.
+# Requests with no referrer (typed address, privacy tools) and our two own sites are allowed.
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^https?://(www\.)?theinstaller\.ca(/|$) [NC]
+RewriteCond %{HTTP_REFERER} !^https?://(www\.)?thewindows\.ca(/|$) [NC]
+RewriteRule \.(jpe?g|png|webp|gif)$ - [F,NC]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.html -f
