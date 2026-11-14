@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import GlazingArt from '../components/GlazingArt.astro';
+import { services, home } from '../site';
+---
+<Base title="Services" description="Curtain wall, storefront and entrances, hollow metal doors and hardware, and commercial window installation in Winnipeg.">
+  <div class="container page-head">
+    <h1>Services</h1>
+    <p>Installation of commercial glazing, doors and windows in Winnipeg and across Manitoba.</p>
+  </div>
+  <div>
+    {services.map((s) => (
+      <section class="section service" id={s.key}>
+        <div class="container split">
+          <div class="media"><GlazingArt kind={s.key} /></div>
+          <div>
+            <h2>{s.name}</h2>
+            <p>{s.text}</p>
+            <ul class="checklist">{s.list.map((x) => <li>{x}</li>)}</ul>
+            {s.key === 'windows' && <a href="https://thewindows.ca" class="more" rel="noopener">+ Residential PVC windows: thewindows.ca</a>}
+          </div>
+        </div>
+      </section>
+    ))}
+  </div>
+  <section class="section section-dark cta-band">
+    <div class="container">
+      <h2>{home.ctaH}</h2>
+      <p>{home.ctaP}</p>
+      <a href="/contact" class="btn btn-light">Request a quote</a>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import GlazingArt from '../components/GlazingArt.astro';
+import { projects, home } from '../site';
+---
+<Base title="Projects" description="Commercial glazing and door installation work by The Installer, Winnipeg.">
+  <div class="container page-head">
+    <h1>Projects</h1>
+    <p>The kind of work we do. Project photos are being added.</p>
+  </div>
+  <section class="section">
+    <div class="container gallery">
+      {projects.map((p) => (
+        <figure>
+          {p.img ? <img src={p.img} alt={p.caption} loading="lazy" /> : <GlazingArt kind={p.kind} />}
+          <figcaption>{p.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+  <section class="section section-dark cta-band">
+    <div class="container">
+      <h2>{home.ctaH}</h2>
+      <p>{home.ctaP}</p>
+      <a href="/contact" class="btn btn-light">Request a quote</a>
+    </div>
+  </section>
+</Base>

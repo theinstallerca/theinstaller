@@ -1,0 +1,74 @@
+---
+import Base from '../layouts/Base.astro';
+import { contact, phone, email, city, hours } from '../site';
+---
+<Base title="Request a quote" description="Request a quote for curtain wall, storefront, door or window installation in Winnipeg.">
+  <section class="section">
+    <div class="container split split-contact">
+      <div>
+        <h1>{contact.h1}</h1>
+        <p class="lead">{contact.lead}</p>
+
+        <div id="form-ok" class="alert alert-ok" hidden>{contact.ok}</div>
+        <div id="form-err" class="alert alert-err" hidden>{contact.err}</div>
+
+        <form class="form" id="contact-form" action="/api/contact.php" method="post">
+          <input type="hidden" name="ts" class="ts" />
+          <div class="form-row">
+            <div><label for="name">Name</label><input id="name" name="name" required autocomplete="name" /></div>
+            <div><label for="company">Company</label><input id="company" name="company" autocomplete="organization" /></div>
+          </div>
+          <div class="form-row">
+            <div><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email" /></div>
+            <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel" /></div>
+          </div>
+          <div class="form-row">
+            <div><label for="project">Project name / location</label><input id="project" name="project" /></div>
+            <div>
+              <label for="service">Type of work</label>
+              <select id="service" name="service">
+                {contact.serviceOptions.map((p) => <option>{p}</option>)}
+              </select>
+            </div>
+          </div>
+          <div><label for="message">Details</label><textarea id="message" name="message" rows="6" placeholder="Scope, quantities, timeline, labour-only or supply and install…"></textarea></div>
+          <div class="hp" aria-hidden="true"><label>Leave this empty<input name="website" tabindex="-1" autocomplete="off" /></label></div>
+          <div><button type="submit" class="btn btn-solid">Send request</button></div>
+          <p class="form-note">{contact.note}</p>
+        </form>
+      </div>
+
+      <div class="info-panel">
+        <h3>Contact</h3>
+        <dl>
+          <dt>Email</dt><dd><a href={`mailto:${email}`}>{email}</a></dd>
+          <dt>Phone</dt><dd><a href={`tel:${phone.tel}`}>{phone.display}</a></dd>
+          <dt>Location</dt><dd>{city}</dd>
+          <dt>Hours</dt><dd>{hours}</dd>
+          <dt>Drawings</dt><dd>Send drawings and door schedules to <a href={`mailto:${email}`}>{email}</a></dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const ok = document.getElementById('form-ok')!;
+    const err = document.getElementById('form-err')!;
+    (form.querySelector('.ts') as HTMLInputElement).value = String(Date.now());
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button')!;
+      btn.disabled = true;
+      ok.hidden = err.hidden = true;
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json', 'X-Requested-With': 'theinstaller' } });
+        const data = await res.json();
+        if (res.ok && data.ok) { ok.hidden = false; form.reset(); }
+        else err.hidden = false;
+      } catch { err.hidden = false; }
+      btn.disabled = false;
+      (ok.hidden ? err : ok).scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  </script>
+</Base>

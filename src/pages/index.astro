@@ -1,0 +1,85 @@
+---
+import Base from '../layouts/Base.astro';
+import GlazingArt from '../components/GlazingArt.astro';
+import Icon from '../components/Icon.astro';
+import { home, services } from '../site';
+const valueIcons = ['ruler', 'snow', 'clock'] as const;
+---
+<Base title="Commercial glazing and door installation in Winnipeg">
+  <section class="hero">
+    <div class="hero-bg"><GlazingArt kind="hero" /></div>
+    <div class="container hero-inner">
+      <h1><small>{home.kicker}</small>{home.h1}</h1>
+      <p>{home.lead}</p>
+      <div class="hero-actions">
+        <a href="/contact" class="btn btn-light">Request a quote</a>
+        <a href="/services" class="more" style="padding: 0.7rem 0; color: #fff;">+ Our services</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <ul>{home.strip.map((label) => <li>{label}</li>)}</ul>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><h2>{home.servicesH}</h2><p>{home.servicesP}</p></div>
+      <div class="cards cards-4">
+        {services.map((s) => (
+          <article class="card">
+            <div class="media"><GlazingArt kind={s.key} /></div>
+            <div class="body"><h3>{s.name}</h3><p>{s.short}</p></div>
+            <div class="foot"><a href={`/services#${s.key}`} class="btn">More info</a></div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="container">
+      <div class="section-head"><h2>{home.valuesH}</h2><p>{home.valuesP}</p></div>
+      <div class="values">
+        {home.values.map(([h, p], i) => (
+          <div class="value">
+            <Icon name={valueIcons[i]} /><span class="bar"></span>
+            <h3>{h}</h3>
+            <p>{p}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div class="media"><GlazingArt kind="storefront" /></div>
+      <div>
+        <h2>{home.whoH}</h2>
+        <p>{home.whoP}</p>
+        <ul class="checklist">{home.whoList.map((x) => <li>{x}</li>)}</ul>
+        <a href="/about" class="more">+ About us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="container">
+      <div class="section-head"><h2>{home.stepsH}</h2></div>
+      <ol class="steps">
+        {home.steps.map(([h, p], i) => (
+          <li><span class="num">0{i + 1}</span><h3>{h}</h3><p>{p}</p></li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section-dark cta-band">
+    <div class="container">
+      <h2>{home.ctaH}</h2>
+      <p>{home.ctaP}</p>
+      <a href="/contact" class="btn btn-light">Request a quote</a>
+    </div>
+  </section>
+</Base>

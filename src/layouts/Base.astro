@@ -1,0 +1,94 @@
+---
+import '../styles/global.css';
+import Logo from '../components/Logo.astro';
+import { nav, phone, email, city, hours, services } from '../site';
+
+interface Props { title: string; description?: string; }
+const { title } = Astro.props;
+const description = Astro.props.description ?? 'Commercial glazing and door installation in Winnipeg, Manitoba: curtain wall, storefront and entrances, hollow metal doors and hardware, commercial windows.';
+const norm = (u: string) => u.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+const current = norm(Astro.url.pathname);
+const canonical = `https://theinstaller.ca${current === '/' ? '' : current}`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · The Installer</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container topbar-inner">
+        <a href={`tel:${phone.tel}`}>Tel {phone.display}</a>
+        <div class="topbar-links">
+          <a href="https://thewindows.ca" rel="noopener">Residential PVC windows → thewindows.ca</a>
+        </div>
+      </div>
+    </div>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="/" class="brand" aria-label="The Installer home"><Logo tagline /></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+        <nav id="nav" class="nav">
+          {nav.map((n) => (
+            <a href={n.href} aria-current={current === norm(n.href) ? 'page' : undefined}>{n.label}</a>
+          ))}
+          <a href="/contact" class="nav-cta">Request a quote</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <Logo />
+          <p style="margin-top: 0.8rem;">Commercial glazing and door installation in {city}.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            {services.map((s) => <li><a href={`/services#${s.key}`}>{s.name}</a></li>)}
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href={`mailto:${email}`}>{email}</a></li>
+            <li><a href={`tel:${phone.tel}`}>{phone.display}</a></li>
+            <li>{hours}</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Residential</h4>
+          <ul>
+            <li>PVC windows for homeowners are made by our partner company.</li>
+            <li><a href="https://thewindows.ca" rel="noopener">thewindows.ca →</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>© {new Date().getFullYear()} The Installer</span>
+        <span>{city}</span>
+      </div>
+    </footer>
+
+    <script>
+      const btn = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('nav');
+      btn?.addEventListener('click', () => {
+        const open = nav!.classList.toggle('open');
+        btn.setAttribute('aria-expanded', String(open));
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import GlazingArt from '../components/GlazingArt.astro';
+import { about, home } from '../site';
+---
+<Base title="About">
+  <section class="section">
+    <div class="container split">
+      <div>
+        <h1>{about.h1}</h1>
+        <p class="lead">{about.lead}</p>
+        <p>{about.p1}</p>
+        <p>{about.p2}</p>
+      </div>
+      <div class="media"><GlazingArt kind="curtainwall" /></div>
+    </div>
+  </section>
+  <section class="section section-soft">
+    <div class="container split" style="align-items: start;">
+      <div>
+        <h2>{about.standH}</h2>
+        <ul class="checklist">{about.stand.map((x) => <li>{x}</li>)}</ul>
+      </div>
+      <div>
+        <h2>{about.resH}</h2>
+        <p>{about.resP}</p>
+        <a href="https://thewindows.ca" class="more" rel="noopener">+ thewindows.ca</a>
+      </div>
+    </div>
+  </section>
+  <section class="section section-dark cta-band">
+    <div class="container">
+      <h2>{home.ctaH}</h2>
+      <p>{home.ctaP}</p>
+      <a href="/contact" class="btn btn-light">Request a quote</a>
+    </div>
+  </section>
+</Base>

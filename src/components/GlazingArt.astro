@@ -1,0 +1,65 @@
+---
+// Dark placeholder drawings; replaced by project photos later.
+interface Props { kind?: 'hero' | 'curtainwall' | 'storefront' | 'doors' | 'windows'; }
+const { kind = 'curtainwall' } = Astro.props;
+const w = kind === 'hero' ? 1600 : 800;
+const h = kind === 'hero' ? 900 : 600;
+const range = (n: number) => Array.from({ length: n }, (_, i) => i);
+---
+<svg viewBox={`0 0 ${w} ${h}`} xmlns="http://www.w3.org/2000/svg" role="img" aria-label="placeholder drawing" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id={`bg-${kind}`} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a2a2a" /><stop offset="1" stop-color="#0d0d0d" /></linearGradient>
+    <linearGradient id={`gl-${kind}`} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#46505a" /><stop offset="0.5" stop-color="#1f2327" /><stop offset="1" stop-color="#333a41" /></linearGradient>
+  </defs>
+  <rect width={w} height={h} fill={`url(#bg-${kind})`} />
+  {kind === 'hero' && (
+    <g transform="translate(860 0)">
+      <rect x="0" y="0" width="740" height="900" fill="url(#gl-hero)" />
+      {range(7).map((i) => <rect x={i * 120} y="0" width="10" height="900" fill="#d9d9d9" />)}
+      {range(6).map((i) => <rect x="0" y={60 + i * 160} width="740" height="8" fill="#d9d9d9" />)}
+      {range(6).map((i) => <rect x="10" y={68 + i * 160} width="730" height="34" fill="#15181b" opacity="0.55" />)}
+      <rect x="250" y="548" width="100" height="152" fill="#ff7d00" opacity="0.9" />
+    </g>
+  )}
+  {kind === 'curtainwall' && (
+    <g transform="translate(120 40)">
+      <rect x="0" y="0" width="560" height="520" fill="url(#gl-curtainwall)" />
+      {range(5).map((i) => <rect x={i * 138} y="0" width="8" height="520" fill="#e0e0e0" />)}
+      {range(5).map((i) => <rect x="0" y={i * 128} width="560" height="8" fill="#e0e0e0" />)}
+      <rect x="146" y="136" width="130" height="120" fill="#ff7d00" opacity="0.85" />
+    </g>
+  )}
+  {kind === 'storefront' && (
+    <g transform="translate(100 110)">
+      <rect x="0" y="0" width="600" height="400" fill="url(#gl-storefront)" />
+      <path d="M0 0H600V400H0Z" fill="none" stroke="#e0e0e0" stroke-width="12" />
+      <rect x="0" y="80" width="600" height="10" fill="#e0e0e0" />
+      <rect x="190" y="80" width="10" height="320" fill="#e0e0e0" />
+      <rect x="400" y="80" width="10" height="320" fill="#e0e0e0" />
+      <rect x="295" y="90" width="10" height="310" fill="#e0e0e0" />
+      <rect x="276" y="200" width="8" height="90" rx="3" fill="#ff7d00" /><rect x="316" y="200" width="8" height="90" rx="3" fill="#ff7d00" />
+      <rect x="-40" y="400" width="680" height="6" fill="#555" />
+    </g>
+  )}
+  {kind === 'doors' && (
+    <g transform="translate(270 60)">
+      <rect x="0" y="0" width="260" height="490" fill="#8d9196" />
+      <rect x="18" y="18" width="224" height="472" fill="#d5d7da" />
+      <rect x="150" y="60" width="60" height="150" fill="url(#gl-doors)" stroke="#8d9196" stroke-width="4" />
+      <rect x="40" y="250" width="60" height="12" rx="6" fill="#ff7d00" />
+      <rect x="214" y="70" width="12" height="46" fill="#777" /><rect x="214" y="230" width="12" height="46" fill="#777" /><rect x="214" y="400" width="12" height="46" fill="#777" />
+      <rect x="-140" y="490" width="540" height="6" fill="#555" />
+    </g>
+  )}
+  {kind === 'windows' && (
+    <g transform="translate(110 70)">
+      {range(3).map((c) => range(2).map((r) => (
+        <g transform={`translate(${c * 200} ${r * 240})`}>
+          <rect x="0" y="0" width="180" height="220" fill="#f0f0f0" />
+          <rect x="14" y="14" width="152" height="192" fill={c === 1 && r === 0 ? '#ff7d00' : 'url(#gl-windows)'} opacity={c === 1 && r === 0 ? 0.85 : 1} />
+          <rect x="14" y="140" width="152" height="8" fill="#f0f0f0" />
+        </g>
+      )))}
+    </g>
+  )}
+</svg>
