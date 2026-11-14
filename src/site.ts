@@ -48,7 +48,7 @@ export const services: Service[] = [
     text: 'We supply and install aluminum curtain wall systems on new buildings and additions. Layout, anchors, framing, glass and seals are done by the same crew, so the wall is plumb, tight and ready for inspection.',
     more: [
       'We work from the approved shop drawings and the manufacturer’s installation instructions. Anchors, alignment and joint sizes are checked before the glass goes in, because that is where leaks and call-backs start.',
-      'Typical jobs are new commercial and mixed-use buildings, additions, stair and elevator towers, and glazed fronts that tie into storefront framing.',
+      'Typical jobs are new commercial and mixed-use buildings, additions, and glazed stair and elevator towers.',
     ],
     list: ['Supply and installation of the complete system', 'Layout and anchor installation', 'Mullions, pressure plates and caps', 'Glass, spandrel and panel infill', 'Perimeter seals and air/vapour barrier tie-in'],
     faqs: [
