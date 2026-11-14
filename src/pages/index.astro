@@ -31,7 +31,7 @@ const valueIcons = ['ruler', 'snow', 'clock'] as const;
           <article class="card">
             <div class="media"><ServiceMedia img={s.img} alt={s.name} /></div>
             <div class="body"><h3>{s.name}</h3><p>{s.short}</p></div>
-            <div class="foot"><a href={`/services#${s.key}`} class="btn">More info</a></div>
+            <div class="foot"><a href={`/${s.slug}`} class="btn">More info</a></div>
           </article>
         ))}
       </div>

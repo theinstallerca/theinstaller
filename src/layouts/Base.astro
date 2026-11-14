@@ -3,13 +3,15 @@ import '../styles/global.css';
 import Logo from '../components/Logo.astro';
 import { nav, phone, email, city, hours, services } from '../site';
 
-interface Props { title: string; description?: string; }
-const { title } = Astro.props;
+interface Props { title: string; description?: string; schemaExtra?: object[]; image?: string; }
+const { title, schemaExtra = [], image } = Astro.props;
 const description = Astro.props.description ?? 'Commercial glazing contractor in Winnipeg, Manitoba. Installation of curtain wall, storefront and entrances, office partitions, commercial and apartment windows, and hollow metal doors.';
 const norm = (u: string) => u.replace(/\.html$/, '').replace(/\/$/, '') || '/';
 const current = norm(Astro.url.pathname);
+const isService = services.some((s) => '/' + s.slug === current);
 const canonical = `https://theinstaller.ca${current === '/' ? '/' : current}`;
-const ogImage = 'https://theinstaller.ca/images/hero.jpg';
+const heroImage = 'https://theinstaller.ca/images/hero.jpg';
+const ogImage = image ? `https://theinstaller.ca${image}` : heroImage;
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
@@ -20,7 +22,7 @@ const schema = {
   url: 'https://theinstaller.ca/',
   telephone: phone.tel,
   email,
-  image: ogImage,
+  image: heroImage,
   sameAs: ['https://www.facebook.com/winnipegwindows/'],
   openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '08:00', closes: '17:00' }],
   address: { '@type': 'PostalAddress', addressLocality: 'Winnipeg', addressRegion: 'MB', addressCountry: 'CA' },
@@ -28,7 +30,7 @@ const schema = {
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Installation services',
-    itemListElement: services.map((s) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: s.name, description: s.text, url: `https://theinstaller.ca/services#${s.key}` } })),
+    itemListElement: services.map((s) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: s.name, description: s.text, url: `https://theinstaller.ca/${s.slug}` } })),
   },
 };
 ---
@@ -49,6 +51,7 @@ const schema = {
     <meta property="og:locale" content="en_CA" />
     <meta name="twitter:card" content="summary_large_image" />
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    {schemaExtra.map((x) => <script type="application/ld+json" set:html={JSON.stringify(x)} />)}
     <link rel="icon" href="/favicon.svg?v=4" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4" />
   </head>
@@ -69,7 +72,7 @@ const schema = {
         </button>
         <nav id="nav" class="nav">
           {nav.map((n) => (
-            <a href={n.href} aria-current={current === norm(n.href) ? 'page' : undefined}>{n.label}</a>
+            <a href={n.href} aria-current={current === norm(n.href) || (isService && n.href === '/services') ? 'page' : undefined}>{n.label}</a>
           ))}
           <a href="/contact" class="nav-cta">Request a quote</a>
         </nav>
@@ -89,7 +92,7 @@ const schema = {
         <div>
           <h4>Services</h4>
           <ul>
-            {services.map((s) => <li><a href={`/services#${s.key}`}>{s.name}</a></li>)}
+            {services.map((s) => <li><a href={`/${s.slug}`}>{s.name}</a></li>)}
           </ul>
         </div>
         <div>

@@ -1,6 +1,8 @@
 import type { APIRoute } from 'astro';
 
-const pages = ['/', '/services', '/projects', '/about', '/contact'];
+import { services } from '../site';
+
+const pages = ['/', '/services', ...services.map((s) => '/' + s.slug), '/projects', '/about', '/contact'];
 
 export const GET: APIRoute = () => {
   const today = new Date().toISOString().slice(0, 10);

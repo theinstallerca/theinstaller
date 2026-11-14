@@ -1,0 +1,106 @@
+---
+import Base from '../layouts/Base.astro';
+import ServiceMedia from '../components/ServiceMedia.astro';
+import Lightbox from '../components/Lightbox.astro';
+import { services, projects, categories, home, type Service } from '../site';
+
+export function getStaticPaths() {
+  return services.map((s) => ({ params: { slug: s.slug }, props: { s } }));
+}
+const { s } = Astro.props as { s: Service };
+const site = 'https://theinstaller.ca';
+const label = (k: string) => categories.find((c) => c.key === k)!.label;
+const photos = projects.filter((p) => p.cats.some((c) => s.photoCats.includes(c)));
+const others = services.filter((o) => o.key !== s.key);
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: s.h1,
+    serviceType: s.name,
+    description: s.description,
+    url: `${site}/${s.slug}`,
+    provider: { '@id': `${site}/#business` },
+    areaServed: [{ '@type': 'City', name: 'Winnipeg' }, { '@type': 'AdministrativeArea', name: 'Manitoba' }],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${site}/` },
+      { '@type': 'ListItem', position: 2, name: 'Services', item: `${site}/services` },
+      { '@type': 'ListItem', position: 3, name: s.name, item: `${site}/${s.slug}` },
+    ],
+  },
+];
+---
+<Base title={s.title} description={s.description} schemaExtra={schema} image={s.img ? `/images/projects/${s.img}.jpg` : undefined}>
+  <section class="section">
+    <div class="container">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/services">Services</a> / <span>{s.name}</span></nav>
+      <div class="split">
+        <div>
+          <h1>{s.h1}</h1>
+          <p class="lead">{s.text}</p>
+          {s.more.map((p) => <p>{p}</p>)}
+          <a href="/contact" class="btn btn-solid">Request a quote</a>
+        </div>
+        <div class="media"><ServiceMedia img={s.img} alt={s.h1} large /></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="container split" style="align-items: start;">
+      <div>
+        <h2>What is included</h2>
+        <ul class="checklist">{s.list.map((x) => <li>{x}</li>)}</ul>
+      </div>
+      <div>
+        <h2>Common questions</h2>
+        <dl class="faq">
+          {s.faqs.map(([q, a]) => <><dt>{q}</dt><dd>{a}</dd></>)}
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  {photos.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <div class="section-head"><h2>Our {s.name.toLowerCase()} work</h2></div>
+        <div class="gallery">
+          {photos.map((p) => {
+            const caption = p.cats.map(label).join(' · ');
+            return (
+              <figure>
+                <a href={`/images/projects/${p.img}.jpg`} data-caption={caption}>
+                  <img src={`/images/projects/${p.img}-t.jpg`} alt={`${caption} installed by Theinstaller, Winnipeg`} width="800" height="600" loading="lazy" />
+                </a>
+              </figure>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class={`section ${photos.length > 0 ? 'section-soft' : ''}`}>
+    <div class="container">
+      <div class="section-head"><h2>Other services</h2></div>
+      <ul class="service-links">
+        {others.map((o) => <li><a href={`/${o.slug}`}>{o.name}</a></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section-dark cta-band">
+    <div class="container">
+      <h2>{home.ctaH}</h2>
+      <p>{home.ctaP}</p>
+      <a href="/contact" class="btn btn-light">Request a quote</a>
+    </div>
+  </section>
+
+  {photos.length > 0 && <Lightbox />}
+</Base>

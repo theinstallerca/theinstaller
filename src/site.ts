@@ -15,53 +15,156 @@ export const nav = [
 export type ServiceKey = 'curtainwall' | 'storefront' | 'partitions' | 'windows' | 'pvc' | 'doors';
 
 // `img` is a file name in public/images/projects/ (without .jpg). No img = placeholder drawing.
-export const services: { key: ServiceKey; name: string; short: string; text: string; list: string[]; img?: string }[] = [
+// Each service has its own page at /<slug>.
+export interface Service {
+  key: ServiceKey;
+  slug: string;
+  name: string;
+  short: string;       // card text
+  text: string;        // first paragraph
+  more: string[];      // further paragraphs on the service page
+  list: string[];      // what is included
+  h1: string;
+  title: string;       // browser/Google title
+  description: string; // Google description
+  faqs: [string, string][];
+  photoCats: string[]; // gallery categories shown on the page
+  img?: string;
+}
+
+const outside: [string, string] = ['Do you work outside Winnipeg?', 'Yes. We are based in Winnipeg and take projects across Manitoba.'];
+
+export const services: Service[] = [
   {
     key: 'curtainwall',
+    slug: 'curtain-wall-installation',
     name: 'Curtain wall',
     img: 'curtainwall-1',
+    photoCats: ['curtainwall'],
+    h1: 'Curtain wall installation in Winnipeg',
+    title: 'Curtain Wall Installation in Winnipeg',
+    description: 'Aluminum curtain wall installation in Winnipeg and Manitoba. Layout, anchors, framing, glazing and seals done by one crew. Send drawings for a quote.',
     short: 'Aluminum curtain wall installed from anchors to caps.',
     text: 'We install aluminum curtain wall systems on new buildings and additions. Layout, anchors, framing, glass and seals are done by the same crew, so the wall is plumb, tight and ready for inspection.',
+    more: [
+      'We work from the approved shop drawings and the manufacturer’s installation instructions. Anchors, alignment and joint sizes are checked before the glass goes in, because that is where leaks and call-backs start.',
+      'Typical jobs are new commercial and mixed-use buildings, additions, stair and elevator towers, and glazed fronts that tie into storefront framing.',
+    ],
     list: ['Layout and anchor installation', 'Mullions, pressure plates and caps', 'Glass, spandrel and panel infill', 'Perimeter seals and air/vapour barrier tie-in'],
+    faqs: [
+      ['Do you install curtain wall supplied by others?', 'Yes. We install systems supplied by the glazing contractor, the fabricator or the general contractor as a labour-only package.'],
+      ['What do you need to price a curtain wall job?', 'The elevations, the curtain wall shop drawings if they are ready, and the schedule. Early in a project the architectural drawings are enough for a budget price.'],
+      outside,
+    ],
   },
   {
     key: 'storefront',
+    slug: 'storefront-entrance-installation',
     name: 'Storefront & entrances',
     img: 'storefront-1',
+    photoCats: ['storefront'],
+    h1: 'Storefront and entrance installation in Winnipeg',
+    title: 'Storefront & Entrance Installation in Winnipeg',
+    description: 'Aluminum storefront framing, entrance doors and vestibules installed in Winnipeg for retail, offices and apartment buildings. Request a quote.',
     short: 'Storefront framing, entrance doors and vestibules.',
     text: 'Storefront framing and aluminum entrances for retail, offices and apartment buildings. We set the frames, hang and adjust the doors, and leave the entrance working the way it should.',
+    more: [
+      'An entrance is the most used part of a building, so the details matter: a level sill, square frames, doors that close on their own and latch every time, and seals that keep the wind out in January.',
+      'We do new storefronts, replacement of old entrances in apartment blocks and commercial buildings, and vestibules added to existing openings.',
+    ],
     list: ['Aluminum storefront framing', 'Entrance doors, closers and hardware', 'Vestibules and apartment building entrances', 'Glass replacement and re-glazing'],
+    faqs: [
+      ['Can you replace an old entrance in an existing building?', 'Yes. We remove the old frame and doors, set the new entrance in the existing opening, and seal and finish the perimeter.'],
+      ['What do you need to quote a storefront or entrance?', 'Drawings if there are any. For a replacement, photos and rough sizes are enough to start, and we measure on site before ordering.'],
+      outside,
+    ],
   },
   {
     key: 'partitions',
+    slug: 'office-glass-partitions',
     name: 'Office partitions',
     img: 'partition-1',
+    photoCats: ['partitions'],
+    h1: 'Office glass partitions in Winnipeg',
+    title: 'Office Glass Partition Installation in Winnipeg',
+    description: 'Glass office partitions installed in Winnipeg: framed and frameless glass fronts, meeting rooms and glass doors for offices and tenant fit-ups.',
     short: 'Glass office fronts and interior glazed partitions.',
     text: 'Interior glazed partitions for offices and tenant fit-ups: framed systems, frameless glass fronts and glass doors. We work clean in finished spaces and around other trades.',
+    more: [
+      'Glass partitions let daylight through an office and still give people a room with a door. We install straight runs, corners, angled and segmented layouts, with swing or sliding glass doors.',
+      'The work ranges from a single glass office front to full partition lines in converted industrial and heritage buildings.',
+    ],
     list: ['Glass office fronts and meeting rooms', 'Framed and frameless systems', 'Glass doors, pulls and hardware', 'Straight, angled and segmented layouts'],
+    faqs: [
+      ['Framed or frameless: which do you install?', 'Both. Framed systems use slim aluminum or steel-look profiles; frameless fronts use glass set in floor and ceiling channels with glass doors.'],
+      ['What do you need to quote partitions?', 'A floor plan with the partition lines and ceiling heights, and the door locations. Photos of the space help.'],
+      outside,
+    ],
   },
   {
     key: 'windows',
+    slug: 'commercial-window-installation',
     name: 'Commercial windows',
     img: 'fiberglass-1',
+    photoCats: ['windows', 'fiberglass'],
+    h1: 'Commercial window installation in Winnipeg',
+    title: 'Commercial Window Installation in Winnipeg',
+    description: 'Aluminum and fiberglass window installation in Winnipeg for commercial, multi-family and heritage buildings. New construction and retrofit.',
     short: 'Aluminum and fiberglass windows for commercial and heritage buildings.',
     text: 'Aluminum and fiberglass window installation for commercial, multi-family and heritage buildings, new construction and retrofit.',
+    more: [
+      'On new construction we set windows into prepared openings and tie them into the air and water barrier. On retrofit jobs we remove the old units, prepare the opening, and install, insulate and seal the new ones.',
+      'Heritage buildings need extra care: openings are rarely square or equal, and the new windows have to suit the look of the building. We have replaced windows in brick and stone buildings of that kind.',
+    ],
     list: ['Aluminum and fiberglass windows', 'New construction and retrofit', 'Heritage building window replacement', 'Flashing, insulation and sealing'],
+    faqs: [
+      ['Do you supply the windows or only install them?', 'Either. We install windows supplied by the manufacturer or the general contractor, and we can quote supply and install together.'],
+      ['What do you need to quote a window job?', 'The window schedule and elevations for new construction. For a retrofit, the number of openings, rough sizes and photos are enough to start.'],
+      outside,
+    ],
   },
   {
     key: 'pvc',
+    slug: 'apartment-window-replacement',
     name: 'Apartment PVC windows',
     img: 'pvc-1',
+    photoCats: ['pvc'],
+    h1: 'Apartment window replacement in Winnipeg',
+    title: 'Apartment PVC Window Replacement in Winnipeg',
+    description: 'PVC window replacement for apartment blocks and townhouses in Winnipeg. Whole-building jobs with windows made in our own Winnipeg shop.',
     short: 'Full-building PVC window replacement for apartment blocks.',
     text: 'PVC window replacement for apartment blocks and townhouses, done as one job for the whole building. The windows come from our own shop in Winnipeg, so sizes and delivery are under our control.',
+    more: [
+      'Every opening is measured, the windows are built to those sizes, and the same crew installs them. One company is responsible for the whole job, from the measurement to the last bead of sealant.',
+      'For property managers and building owners that means one quote, one schedule and one contact.',
+    ],
     list: ['Whole-building window replacement', 'Apartment blocks and townhouses', 'Flashing, insulation and sealing', 'PVC windows fabricated in our own shop'],
+    faqs: [
+      ['Where do the windows come from?', 'From our own PVC window shop in Winnipeg, which also serves homeowners as The Windows (thewindows.ca).'],
+      ['Do you replace windows in single houses?', 'Homeowner jobs are handled by our residential company, The Windows, at thewindows.ca.'],
+      outside,
+    ],
   },
   {
     key: 'doors',
+    slug: 'hollow-metal-door-installation',
     name: 'Hollow metal doors & hardware',
+    photoCats: [],
+    h1: 'Hollow metal door and hardware installation in Winnipeg',
+    title: 'Hollow Metal Door & Hardware Installation in Winnipeg',
+    description: 'Hollow metal frames, doors and finish hardware installed in Winnipeg on commercial and multi-family projects. Labour-only packages welcome.',
     short: 'Frames, doors and hardware installed to the schedule.',
     text: 'We install hollow metal frames, doors and finish hardware on commercial and multi-family projects. Labour-only packages are welcome — send us the door schedule and we will price it.',
+    more: [
+      'Doors are installed to the door and hardware schedules: frames set plumb and square, doors hung with even gaps, and hardware fitted and adjusted so every opening closes and latches.',
+      'We work for door and hardware suppliers who need an install crew, and for general contractors who want the whole door package installed by one company.',
+    ],
     list: ['Hollow metal frames and doors', 'Finish hardware installed to the hardware schedule', 'Fire-rated openings', 'Labour-only installation for suppliers and general contractors'],
+    faqs: [
+      ['Do you take labour-only door packages?', 'Yes. The supplier or general contractor provides the frames, doors and hardware, and we install them to the schedule.'],
+      ['What do you need to price a door package?', 'The door schedule, the hardware schedule and the floor plans, plus the project schedule.'],
+      outside,
+    ],
   },
 ];
 

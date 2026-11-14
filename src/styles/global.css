@@ -273,3 +273,19 @@ img { -webkit-user-drag: none; user-select: none; -webkit-touch-callout: none; }
 .site-header .logo-word { font-size: 2.15rem; }
 .site-header .logo-tag { font-size: 0.74rem; margin-top: 0.25rem; }
 .site-header .brand img.logo-img { height: 50px; width: auto; }
+
+/* Service pages */
+.crumbs { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 2rem; }
+.crumbs a { color: var(--muted); text-decoration: none; }
+.crumbs a:hover { color: var(--gold-dark); }
+.crumbs span { color: var(--ink); }
+.split h1 { font-size: clamp(1.5rem, 2.8vw, 2.1rem); }
+.service h2 a { color: inherit; text-decoration: none; }
+.service h2 a:hover { color: var(--gold-dark); }
+.faq { margin: 0; }
+.faq dt { font-weight: 500; color: var(--ink); margin-top: 1.2rem; }
+.faq dt:first-child { margin-top: 0; }
+.faq dd { margin: 0.3rem 0 0; }
+.service-links { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; }
+.service-links a { display: inline-flex; align-items: center; min-height: 44px; padding: 0.6rem 1.2rem; border: 1px solid var(--line); background: #fff; text-decoration: none; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 400; }
+.service-links a:hover { border-color: var(--gold); color: var(--gold-dark); }

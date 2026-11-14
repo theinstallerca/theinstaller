@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Lightbox from '../components/Lightbox.astro';
 import { projects, categories, home } from '../site';
 const label = (k: string) => categories.find((c) => c.key === k)!.label;
 ---
@@ -37,13 +38,7 @@ const label = (k: string) => categories.find((c) => c.key === k)!.label;
     </div>
   </section>
 
-  <dialog class="lightbox" aria-label="Photo">
-    <button class="lb-close" aria-label="Close">×</button>
-    <button class="lb-prev" aria-label="Previous photo">‹</button>
-    <img alt="" />
-    <button class="lb-next" aria-label="Next photo">›</button>
-    <p class="lb-cap"></p>
-  </dialog>
+  <Lightbox />
 
   <script>
     const figures = [...document.querySelectorAll<HTMLElement>('.gallery figure')];
@@ -61,22 +56,5 @@ const label = (k: string) => categories.find((c) => c.key === k)!.label;
     const h = location.hash.slice(1);
     if (h === 'windows') select('', ['windows', 'fiberglass']);
     else if (h && buttons.some((b) => b.dataset.cat === h)) select(h, [h]);
-
-    const lb = document.querySelector<HTMLDialogElement>('.lightbox')!;
-    const lbImg = lb.querySelector('img')!;
-    const lbCap = lb.querySelector('.lb-cap')!;
-    let i = 0;
-    const visible = () => figures.filter((f) => !f.hidden).map((f) => f.querySelector('a')!);
-    function open(n: number) {
-      const list = visible(); i = (n + list.length) % list.length;
-      lbImg.src = list[i].href; lbImg.alt = list[i].dataset.caption!; lbCap.textContent = list[i].dataset.caption!;
-      if (!lb.open) lb.showModal();
-    }
-    figures.forEach((f) => f.querySelector('a')!.addEventListener('click', (e) => { e.preventDefault(); open(visible().indexOf(f.querySelector('a')!)); }));
-    lb.querySelector('.lb-close')!.addEventListener('click', () => lb.close());
-    lb.querySelector('.lb-prev')!.addEventListener('click', () => open(i - 1));
-    lb.querySelector('.lb-next')!.addEventListener('click', () => open(i + 1));
-    lb.addEventListener('click', (e) => { if (e.target === lb) lb.close(); });
-    lb.addEventListener('keydown', (e) => { if (e.key === 'ArrowLeft') open(i - 1); if (e.key === 'ArrowRight') open(i + 1); });
   </script>
 </Base>
