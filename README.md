@@ -1,6 +1,6 @@
 # theinstaller.ca
 
-Static site for The Installer (commercial glazing and door installation, Winnipeg). Built with Astro.
+Static site for Theinstaller (commercial glazing and door installation, Winnipeg). Built with Astro.
 Sister site of thewindows.ca (residential PVC windows) and built the same way.
 
 - `src/site.ts` – all the text, phone, email and service list

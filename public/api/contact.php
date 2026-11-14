@@ -51,7 +51,7 @@ $body .= "Details:\n$message\n\n";
 $body .= "---\nIP: " . ($_SERVER['REMOTE_ADDR'] ?? '') . "\nTime: " . date('Y-m-d H:i:s') . "\n";
 
 $replyName = preg_replace('/[^\p{L}\p{N} .\'-]/u', '', $name);
-$headers  = "From: The Installer website <$FROM>\r\n";
+$headers  = "From: Theinstaller website <$FROM>\r\n";
 $headers .= "Reply-To: $replyName <$email>\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 

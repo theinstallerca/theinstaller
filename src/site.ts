@@ -2,7 +2,7 @@
 export const phone = { display: '(204) 230-8145', tel: '+12042308145' };
 export const email = 'info@theinstaller.ca';
 export const city = 'Winnipeg, Manitoba';
-export const hours = 'Mon–Fri 7:00–17:00';
+export const hours = 'Mon–Fri 8:00–17:00';
 
 export const nav = [
   { href: '/', label: 'Home' },
@@ -98,9 +98,9 @@ export const home = {
 };
 
 export const about = {
-  h1: 'About The Installer',
+  h1: 'About Theinstaller',
   lead: 'A Winnipeg installation company for commercial glazing and doors.',
-  p1: 'The Installer does one thing: installation. Curtain wall, storefront, office partitions, windows and doors — set properly, sealed properly and finished on time.',
+  p1: 'Theinstaller does one thing: installation. Curtain wall, storefront, office partitions, windows and doors — set properly, sealed properly and finished on time.',
   p2: 'We work for general contractors, for suppliers who need a crew, and directly for building owners. Small tenant fit-up or a full building envelope package, the work gets the same attention.',
   standH: 'What you can expect',
   stand: [
