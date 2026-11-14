@@ -42,7 +42,7 @@ export const services: { key: ServiceKey; name: string; short: string; text: str
   },
   {
     key: 'windows',
-    name: 'Commercial & fiberglass windows',
+    name: 'Commercial windows',
     img: 'fiberglass-1',
     short: 'Aluminum and fiberglass windows for commercial and heritage buildings.',
     text: 'Aluminum and fiberglass window installation for commercial, multi-family and heritage buildings, new construction and retrofit.',
@@ -116,7 +116,7 @@ export const about = {
 export const contact = {
   h1: 'Request a quote',
   lead: 'Tell us about the project. Drawings and schedules can be sent by email after you submit the form.',
-  serviceOptions: ['Curtain wall', 'Storefront & entrances', 'Office partitions', 'Commercial & fiberglass windows', 'Apartment PVC windows', 'Hollow metal doors & hardware', 'Other / not sure'],
+  serviceOptions: ['Curtain wall', 'Storefront & entrances', 'Office partitions', 'Commercial windows', 'Apartment PVC windows', 'Hollow metal doors & hardware', 'Other / not sure'],
   ok: 'Thank you — your request was sent. We will get back to you shortly.',
   err: 'Sorry, the form could not be sent. Please email or call us instead.',
   note: 'We reply within one business day.',
