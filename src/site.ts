@@ -70,9 +70,9 @@ export const services: Service[] = [
     text: 'We supply and install storefront framing and aluminum entrances for apartment buildings, retail and offices. We set the frames, hang and adjust the doors, and leave the entrance working the way it should.',
     more: [
       'An entrance is the most used part of a building, so the details matter: a level sill, square frames, doors that close on their own and latch every time, and seals that keep the wind out in January.',
-      'A new aluminum entrance is the simplest way to upgrade an apartment building: it changes how the building looks from the street, stops drafts in the lobby and gives tenants a door that works. We also do new storefronts for retail and offices, and vestibules added to existing openings.',
+      'A new aluminum entrance is the simplest way to upgrade an apartment building: it changes how the building looks from the street, stops drafts in the lobby and gives tenants a door that works. We also do new storefronts for retail and offices.',
     ],
-    list: ['Supply and installation', 'Apartment building entrance upgrades', 'Aluminum storefront framing', 'Entrance doors, closers and hardware', 'Vestibules', 'Glass replacement and re-glazing'],
+    list: ['Supply and installation', 'Apartment building entrance upgrades', 'Aluminum storefront framing', 'Entrance doors, closers and hardware', 'Glass replacement and re-glazing'],
     faqs: [
       ['Can you replace the old entrance of an apartment building?', 'Yes. We supply the new entrance, remove the old frame and doors, set the new one in the existing opening, and seal and finish the perimeter.'],
       ['What do you need to quote a storefront or entrance?', 'Drawings if there are any. For a replacement, photos and rough sizes are enough to start, and we measure on site before ordering.'],
