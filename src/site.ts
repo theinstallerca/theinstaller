@@ -30,6 +30,8 @@ export interface Service {
   faqs: [string, string][];
   photoCats: string[]; // gallery categories shown on the page
   img?: string;
+  workH?: string;     // heading above the photos, when the default "Our <name> work" does not fit
+  shareImg?: string;  // photo for link previews when the service has no img
 }
 
 const outside: [string, string] = ['Do you work outside Winnipeg?', 'Yes. We are based in Winnipeg and take projects across Manitoba.'];
@@ -64,7 +66,7 @@ export const services: Service[] = [
     img: 'storefront-1',
     photoCats: ['storefront'],
     h1: 'Storefront and entrance installation in Winnipeg',
-    title: 'Storefront & Entrance Installation in Winnipeg',
+    title: 'Storefront Entrance Installation in Winnipeg',
     description: 'Aluminum storefront and entrances supplied and installed in Winnipeg. A clean way to upgrade an apartment building entrance. Request a quote.',
     short: 'Storefront framing and entrances, supplied and installed.',
     text: 'We supply and install storefront framing and aluminum entrances for apartment buildings, retail and offices. We set the frames, hang and adjust the doors, and leave the entrance working the way it should.',
@@ -86,7 +88,7 @@ export const services: Service[] = [
     img: 'partition-1',
     photoCats: ['partitions'],
     h1: 'Office glass partitions in Winnipeg',
-    title: 'Office Glass Partition Installation in Winnipeg',
+    title: 'Office Glass Partition Installation Winnipeg',
     description: 'Glass office partitions installed in Winnipeg: framed and frameless glass fronts, meeting rooms and glass doors for offices and tenant fit-ups.',
     short: 'Glass office fronts and interior glazed partitions.',
     text: 'Interior glazed partitions for offices and tenant fit-ups: framed systems, frameless glass fronts and glass doors. We work clean in finished spaces and around other trades.',
@@ -107,6 +109,7 @@ export const services: Service[] = [
     name: 'Aluminum windows',
     img: 'fiberglass-1',
     photoCats: ['windows', 'fiberglass'],
+    workH: 'Our aluminum and fiberglass window work',
     h1: 'Commercial window installation in Winnipeg',
     title: 'Commercial Window Installation in Winnipeg',
     description: 'Aluminum and fiberglass windows supplied and installed in Winnipeg for multi-unit buildings and offices. New construction and retrofit.',
@@ -150,8 +153,9 @@ export const services: Service[] = [
     slug: 'hollow-metal-door-installation',
     name: 'Hollow metal doors & hardware',
     photoCats: ['doors'],
+    shareImg: 'doors-1',
     h1: 'Hollow metal door and hardware installation in Winnipeg',
-    title: 'Hollow Metal Door & Hardware Installation in Winnipeg',
+    title: 'Hollow Metal Door Installation in Winnipeg',
     description: 'Hollow metal frames, doors and finish hardware installed in Winnipeg on commercial and multi-family projects. Labour-only packages welcome.',
     short: 'Frames, doors and hardware installed to the schedule.',
     text: 'We install hollow metal frames, doors and finish hardware on commercial and multi-family projects. Labour-only packages are welcome — send us the door schedule and we will price it.',
@@ -217,7 +221,7 @@ export const about = {
 };
 
 export const contact = {
-  h1: 'Request a quote',
+  h1: 'Request a quote for glazing installation in Winnipeg',
   lead: 'Tell us about the project. Drawings and schedules can be sent by email after you submit the form.',
   serviceOptions: ['Curtain wall', 'Storefront & entrances', 'Office partitions', 'Aluminum windows', 'Apartment PVC windows', 'Hollow metal doors & hardware', 'Other / not sure'],
   ok: 'Thank you — your request was sent. We will get back to you shortly.',

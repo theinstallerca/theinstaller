@@ -34,7 +34,7 @@ const schema = [
   },
 ];
 ---
-<Base title={s.title} description={s.description} schemaExtra={schema} image={s.img ? `/images/projects/${s.img}.jpg` : undefined}>
+<Base title={s.title} description={s.description} schemaExtra={schema} image={s.img || s.shareImg ? `/images/projects/${s.img ?? s.shareImg}.jpg` : undefined}>
   <section class="section">
     <div class="container">
       <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/services">Services</a> / <span>{s.name}</span></nav>
@@ -68,7 +68,7 @@ const schema = [
   {photos.length > 0 && (
     <section class="section">
       <div class="container">
-        <div class="section-head"><h2>Our {s.name[0].toLowerCase() + s.name.slice(1)} work</h2></div>
+        <div class="section-head"><h2>{s.workH ?? `Our ${s.name[0].toLowerCase() + s.name.slice(1)} work`}</h2></div>
         <div class="gallery">
           {photos.map((p) => {
             const caption = photoCaption(p.cats);

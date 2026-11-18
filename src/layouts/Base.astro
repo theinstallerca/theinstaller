@@ -5,7 +5,7 @@ import { nav, phone, email, city, hours, services } from '../site';
 
 interface Props { title: string; description?: string; schemaExtra?: object[]; image?: string; }
 const { title, schemaExtra = [], image } = Astro.props;
-const description = Astro.props.description ?? 'Commercial glazing contractor in Winnipeg, Manitoba. Installation of curtain wall, storefront and entrances, office partitions, commercial and apartment windows, and hollow metal doors.';
+const description = Astro.props.description ?? 'Commercial glazing contractor in Winnipeg. We install curtain wall, storefront entrances, office partitions, commercial and apartment windows, and steel doors.';
 const norm = (u: string) => u.replace(/\.html$/, '').replace(/\/$/, '') || '/';
 const current = norm(Astro.url.pathname);
 const isService = services.some((s) => '/' + s.slug === current);
