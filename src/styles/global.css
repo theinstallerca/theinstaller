@@ -213,6 +213,7 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--g
 .partner-link img { height: 15px; width: auto; display: block; }
 .partner-logo { display: inline-block; margin-top: 0.4rem; }
 .partner-logo img { height: 26px; width: auto; display: block; }
+.partner-logo-lg img { height: 34px; }
 .site-footer .brand-mark { display: none; }
 
 /* Language switch */
