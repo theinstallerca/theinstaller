@@ -281,4 +281,5 @@ export const projects: { img: string; cats: CategoryKey[] }[] = [
   { img: 'storefront-7', cats: ['storefront', 'windows'] },
   { img: 'partition-7', cats: ['partitions'] },
   { img: 'storefront-8', cats: ['storefront'] },
+  { img: 'storefront-9', cats: ['storefront'] },
 ];
