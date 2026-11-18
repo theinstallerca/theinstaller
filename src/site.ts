@@ -277,7 +277,6 @@ export const projects: { img: string; cats: CategoryKey[]; alt: string }[] = [
   { img: 'storefront-5', cats: ['storefront'], alt: 'Black aluminum storefront entrance with door and transom in a brick building' },
   { img: 'partition-6', cats: ['partitions'], alt: 'Row of glass-fronted offices with black frames and glass doors' },
   { img: 'storefront-6', cats: ['storefront', 'windows'], alt: 'White aluminum entrance and windows on a single-storey stone-faced building' },
-  { img: 'pvc-6', cats: ['pvc'], alt: 'Window replacement from a boom lift on a painted brick building' },
   { img: 'pvc-8', cats: ['pvc'], alt: 'New black-framed windows in a three-storey red brick apartment building' },
   { img: 'pvc-9', cats: ['pvc'], alt: 'White PVC windows in a three-storey brown brick apartment building' },
   { img: 'pvc-10', cats: ['pvc'], alt: 'White PVC windows in a row of dark stucco apartment blocks' },
