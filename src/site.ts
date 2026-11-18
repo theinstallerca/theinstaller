@@ -284,6 +284,7 @@ export const projects: { img: string; cats: CategoryKey[]; alt: string }[] = [
   { img: 'pvc-11', cats: ['pvc'], alt: 'White PVC windows in a yellow brick apartment building with a canopied entrance' },
   { img: 'pvc-12', cats: ['pvc'], alt: 'White PVC windows and a black glazed entrance in a brick apartment building' },
   { img: 'pvc-13', cats: ['pvc'], alt: 'White PVC slider windows along a red brick apartment building' },
+  { img: 'pvc-14', cats: ['pvc'], alt: 'Black-framed windows and balcony doors in a six-storey white apartment building' },
   { img: 'fiberglass-6', cats: ['fiberglass', 'curtainwall'], alt: 'Six floors of black-framed window wall on a mixed-use building' },
   { img: 'fiberglass-7', cats: ['fiberglass'], alt: 'Black fiberglass windows and arched dormers in a brick heritage house' },
   { img: 'fiberglass-8', cats: ['fiberglass'], alt: 'Dark-framed fiberglass windows in a six-storey brick heritage building' },
