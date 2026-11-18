@@ -207,9 +207,9 @@ export const home = {
 
 export const about = {
   h1: 'About Theinstaller',
-  lead: 'A Winnipeg installation company for commercial glazing and doors.',
-  p1: 'Theinstaller does one thing: installation. Curtain wall, storefront, office partitions, windows and doors — set properly, sealed properly and finished on time.',
-  p2: 'We work for general contractors, for suppliers who need a crew, and directly for building owners. Small tenant fit-up or a full building envelope package, the work gets the same attention.',
+  lead: 'A Winnipeg company that supplies and installs commercial glazing, windows and doors.',
+  p1: 'Theinstaller takes a job from the first measurement to the finished project. We measure, go through the options with you, recommend what suits the building and the budget, then supply and install it. Curtain wall, storefront, office partitions, windows and doors — set properly, sealed properly and finished on time.',
+  p2: 'We work for general contractors, for suppliers who need an install crew, and directly for building owners. Small tenant fit-up or a full building envelope package, the work gets the same attention.',
   standH: 'What you can expect',
   stand: [
     'A written quote with a clear scope',
