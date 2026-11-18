@@ -208,6 +208,11 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--g
 .footer-bottom { border-top: 1px solid var(--line); margin-top: 2.5rem; padding-top: 1.25rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; font-size: 0.8rem; color: var(--muted); }
 
 .brand img { height: 34px; width: auto; }
+/* Partner company (thewindows.ca) logo links */
+.partner-link { display: inline-flex; align-items: center; gap: 0.6rem; }
+.partner-link img { height: 15px; width: auto; display: block; }
+.partner-logo { display: inline-block; margin-top: 0.4rem; }
+.partner-logo img { height: 26px; width: auto; display: block; }
 .site-footer .brand-mark { display: none; }
 
 /* Language switch */

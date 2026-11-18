@@ -2,6 +2,12 @@
 import '../styles/global.css';
 import Logo from '../components/Logo.astro';
 import { nav, phone, email, city, hours, services, facebook } from '../site';
+import { v } from '../img';
+
+// Partner company logo link (top bar and footer).
+const partnerLogo = v('/thewindows-logo.svg');
+const partnerAlt = 'The Windows – residential PVC window replacement in Winnipeg';
+const partnerTitle = 'The Windows: PVC windows for homeowners in Winnipeg (thewindows.ca)';
 
 interface Props { title: string; description?: string; schemaExtra?: object[]; image?: string; }
 const { title, schemaExtra = [], image } = Astro.props;
@@ -60,7 +66,10 @@ const schema = {
       <div class="container topbar-inner">
         <a href={`tel:${phone.tel}`}>Tel {phone.display}</a>
         <div class="topbar-links">
-          <a href="https://thewindows.ca" rel="noopener">Residential PVC windows → thewindows.ca</a>
+          <a href="https://thewindows.ca" rel="noopener" class="partner-link" title={partnerTitle}>
+            <span>Residential PVC windows →</span>
+            <img src={partnerLogo} alt={partnerAlt} width="703" height="96" />
+          </a>
         </div>
       </div>
     </div>
@@ -108,7 +117,11 @@ const schema = {
           <h4>Residential</h4>
           <ul>
             <li>PVC windows for homeowners are handled by our partner company.</li>
-            <li><a href="https://thewindows.ca" rel="noopener">thewindows.ca →</a></li>
+            <li>
+              <a href="https://thewindows.ca" rel="noopener" class="partner-logo" title={partnerTitle}>
+                <img src={partnerLogo} alt={partnerAlt} width="703" height="96" loading="lazy" />
+              </a>
+            </li>
           </ul>
         </div>
       </div>
