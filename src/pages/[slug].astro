@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import ServiceMedia from '../components/ServiceMedia.astro';
 import Lightbox from '../components/Lightbox.astro';
 import { services, projects, categories, home, type Service } from '../site';
+import { v } from '../img';
 
 export function getStaticPaths() {
   return services.map((s) => ({ params: { slug: s.slug }, props: { s } }));
@@ -74,8 +75,8 @@ const schema = [
             const caption = p.cats.map(label).join(' · ');
             return (
               <figure>
-                <a href={`/images/projects/${p.img}.jpg`} data-caption={caption}>
-                  <img src={`/images/projects/${p.img}-t.jpg`} alt={`${caption} installed by Theinstaller, Winnipeg`} width="800" height="600" loading="lazy" />
+                <a href={v(`/images/projects/${p.img}.jpg`)} data-caption={caption}>
+                  <img src={v(`/images/projects/${p.img}-t.jpg`)} alt={`${caption} installed by Theinstaller, Winnipeg`} width="800" height="600" loading="lazy" />
                 </a>
               </figure>
             );

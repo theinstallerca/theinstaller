@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Lightbox from '../components/Lightbox.astro';
 import { projects, categories, home } from '../site';
+import { v } from '../img';
 const label = (k: string) => categories.find((c) => c.key === k)!.label;
 ---
 <Base title="Glazing & Window Installation Projects in Winnipeg" description="Photos of curtain wall, storefront, office partition and window installation work by Theinstaller, Winnipeg.">
@@ -20,8 +21,8 @@ const label = (k: string) => categories.find((c) => c.key === k)!.label;
           const caption = p.cats.map(label).join(' · ');
           return (
             <figure data-cats={p.cats.join(' ')}>
-              <a href={`/images/projects/${p.img}.jpg`} data-caption={caption}>
-                <img src={`/images/projects/${p.img}-t.jpg`} alt={`${caption} installed by Theinstaller, Winnipeg`} width="800" height="600" loading="lazy" />
+              <a href={v(`/images/projects/${p.img}.jpg`)} data-caption={caption}>
+                <img src={v(`/images/projects/${p.img}-t.jpg`)} alt={`${caption} installed by Theinstaller, Winnipeg`} width="800" height="600" loading="lazy" />
               </a>
               <figcaption>{caption}</figcaption>
             </figure>

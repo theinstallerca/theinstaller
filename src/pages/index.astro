@@ -3,11 +3,12 @@ import Base from '../layouts/Base.astro';
 import ServiceMedia from '../components/ServiceMedia.astro';
 import Icon from '../components/Icon.astro';
 import { home, services } from '../site';
+import { v } from '../img';
 const valueIcons = ['ruler', 'snow', 'clock'] as const;
 ---
 <Base title="Commercial Glazing Contractor in Winnipeg">
   <section class="hero">
-    <img class="hero-bg" src="/images/hero.jpg" alt="Window installation on a multi-storey building in Winnipeg" fetchpriority="high" />
+    <img class="hero-bg" src={v('/images/hero.jpg')} alt="Window installation on a multi-storey building in Winnipeg" fetchpriority="high" />
     <div class="hero-shade"></div>
     <div class="container hero-inner">
       <h1><small>{home.kicker}</small>{home.h1}</h1>
@@ -55,7 +56,7 @@ const valueIcons = ['ruler', 'snow', 'clock'] as const;
 
   <section class="section">
     <div class="container split">
-      <div class="media"><img src="/images/projects/partition-3.jpg" alt="Glazed office partitions in a converted industrial building" loading="lazy" /></div>
+      <div class="media"><img src={v('/images/projects/partition-3.jpg')} alt="Glazed office partitions in a converted industrial building" loading="lazy" /></div>
       <div>
         <h2>{home.whoH}</h2>
         <p>{home.whoP}</p>
