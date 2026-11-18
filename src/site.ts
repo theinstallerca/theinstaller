@@ -259,5 +259,6 @@ export const projects: { img: string; cats: CategoryKey[] }[] = [
   { img: 'pvc-6', cats: ['pvc'] },
   { img: 'pvc-8', cats: ['pvc'] },
   { img: 'pvc-9', cats: ['pvc'] },
+  { img: 'pvc-10', cats: ['pvc'] },
   { img: 'fiberglass-6', cats: ['fiberglass', 'curtainwall'] },
 ];
