@@ -52,7 +52,7 @@ import { v } from '../img';
       select(cat, cat === 'all' ? null : [cat]);
       history.replaceState(null, '', cat === 'all' ? location.pathname : '#' + cat);
     }));
-    // Links from the Services page: "Commercial windows" opens both window categories.
+    // Links from the Services page: the windows service opens both window categories (aluminum and fiberglass).
     const h = location.hash.slice(1);
     if (h === 'windows') select('', ['windows', 'fiberglass']);
     else if (h && buttons.some((b) => b.dataset.cat === h)) select(h, [h]);
