@@ -4,7 +4,7 @@ import Lightbox from '../components/Lightbox.astro';
 import { projects, categories, home, photoCaption, photoAlt } from '../site';
 import { v } from '../img';
 ---
-<Base title="Glazing & Window Installation Projects in Winnipeg" description="Photos of curtain wall, storefront, office partition and window installation work by Theinstaller, Winnipeg.">
+<Base title="Glazing & Window Installation Projects in Winnipeg" description="Photos of curtain wall, storefront entrances, office partitions, aluminum, fiberglass and PVC windows, and steel doors installed by Theinstaller in Winnipeg.">
   <div class="container page-head">
     <h1>Projects</h1>
     <p>Some of our work in Winnipeg and Manitoba, finished and in progress.</p>
@@ -22,7 +22,7 @@ import { v } from '../img';
           return (
             <figure data-cats={p.cats.join(' ')}>
               <a href={v(`/images/projects/${p.img}.jpg`)} data-caption={caption}>
-                <img src={v(`/images/projects/${p.img}-t.jpg`)} alt={photoAlt(p.cats)} width="800" height="600" loading="lazy" />
+                <img src={v(`/images/projects/${p.img}-t.jpg`)} alt={photoAlt(p.cats, p.alt)} width="800" height="600" loading="lazy" />
               </a>
               <figcaption>{caption}</figcaption>
             </figure>

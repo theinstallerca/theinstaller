@@ -68,14 +68,14 @@ const schema = [
   {photos.length > 0 && (
     <section class="section">
       <div class="container">
-        <div class="section-head"><h2>Our {s.name.toLowerCase()} work</h2></div>
+        <div class="section-head"><h2>Our {s.name[0].toLowerCase() + s.name.slice(1)} work</h2></div>
         <div class="gallery">
           {photos.map((p) => {
             const caption = photoCaption(p.cats);
             return (
               <figure>
                 <a href={v(`/images/projects/${p.img}.jpg`)} data-caption={caption}>
-                  <img src={v(`/images/projects/${p.img}-t.jpg`)} alt={photoAlt(p.cats)} width="800" height="600" loading="lazy" />
+                  <img src={v(`/images/projects/${p.img}-t.jpg`)} alt={photoAlt(p.cats, p.alt)} width="800" height="600" loading="lazy" />
                 </a>
               </figure>
             );

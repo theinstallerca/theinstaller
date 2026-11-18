@@ -242,53 +242,54 @@ export type CategoryKey = (typeof categories)[number]['key'];
 export function photoCaption(cats: readonly CategoryKey[]): string {
   return cats.map((k) => categories.find((c) => c.key === k)!.label).join(' · ');
 }
-export function photoAlt(cats: readonly CategoryKey[]): string {
+export function photoAlt(cats: readonly CategoryKey[], desc: string): string {
   const tags = new Set<string>();
   for (const k of cats) {
     const c = categories.find((x) => x.key === k)!;
     if ('tag' in c) tags.add(c.tag);
   }
   const extra = tags.size ? ` (${[...tags].join(', ')})` : '';
-  return `${photoCaption(cats)}${extra} installed by Theinstaller, Winnipeg`;
+  return `${desc} – ${photoCaption(cats)}${extra}, installed by Theinstaller, Winnipeg`;
 }
 
-export const projects: { img: string; cats: CategoryKey[] }[] = [
-  { img: 'curtainwall-1', cats: ['curtainwall'] },
-  { img: 'fiberglass-1', cats: ['fiberglass'] },
-  { img: 'partition-1', cats: ['partitions'] },
-  { img: 'storefront-1', cats: ['storefront'] },
-  { img: 'pvc-1', cats: ['pvc'] },
-  { img: 'windows-1', cats: ['windows'] },
-  { img: 'partition-2', cats: ['partitions'] },
-  { img: 'storefront-2', cats: ['storefront'] },
-  { img: 'partition-3', cats: ['partitions'] },
-  { img: 'storefront-3', cats: ['storefront', 'windows'] },
-  { img: 'partition-4', cats: ['partitions'] },
-  { img: 'storefront-4', cats: ['storefront'] },
-  { img: 'pvc-5', cats: ['pvc'] },
-  { img: 'fiberglass-5', cats: ['fiberglass', 'curtainwall'] },
-  { img: 'partition-5', cats: ['partitions'] },
-  { img: 'storefront-5', cats: ['storefront'] },
-  { img: 'partition-6', cats: ['partitions'] },
-  { img: 'storefront-6', cats: ['storefront', 'windows'] },
-  { img: 'pvc-6', cats: ['pvc'] },
-  { img: 'pvc-8', cats: ['pvc'] },
-  { img: 'pvc-9', cats: ['pvc'] },
-  { img: 'pvc-10', cats: ['pvc'] },
-  { img: 'pvc-11', cats: ['pvc'] },
-  { img: 'pvc-12', cats: ['pvc'] },
-  { img: 'pvc-13', cats: ['pvc'] },
-  { img: 'fiberglass-6', cats: ['fiberglass', 'curtainwall'] },
-  { img: 'fiberglass-7', cats: ['fiberglass'] },
-  { img: 'fiberglass-8', cats: ['fiberglass'] },
-  { img: 'storefront-7', cats: ['storefront', 'windows'] },
-  { img: 'partition-7', cats: ['partitions'] },
-  { img: 'storefront-8', cats: ['storefront'] },
-  { img: 'storefront-9', cats: ['storefront'] },
-  { img: 'storefront-10', cats: ['storefront'] },
-  { img: 'storefront-11', cats: ['storefront'] },
-  { img: 'storefront-12', cats: ['storefront'] },
-  { img: 'curtainwall-6', cats: ['curtainwall'] },
-  { img: 'curtainwall-7', cats: ['curtainwall'] },
-  { img: 'doors-1', cats: ['doors'] },
+// `alt` describes what the photo shows, in a few words, for search engines and screen readers. Each photo needs its own.
+export const projects: { img: string; cats: CategoryKey[]; alt: string }[] = [
+  { img: 'curtainwall-1', cats: ['curtainwall'], alt: 'Glass stair tower beside an exterior steel staircase' },
+  { img: 'fiberglass-1', cats: ['fiberglass'], alt: 'Six-storey building with black-framed window walls on every floor' },
+  { img: 'partition-1', cats: ['partitions'], alt: 'Frameless glass front and double glass doors at an office reception' },
+  { img: 'storefront-1', cats: ['storefront'], alt: 'Dark bronze aluminum storefront entrance to a brick apartment building' },
+  { img: 'pvc-1', cats: ['pvc'], alt: 'White PVC windows in a three-storey orange brick apartment building' },
+  { img: 'windows-1', cats: ['windows'], alt: 'Aluminum ribbon windows on an industrial building' },
+  { img: 'partition-2', cats: ['partitions'], alt: 'Curved frameless glass partition with a black frame in a lobby' },
+  { img: 'storefront-2', cats: ['storefront'], alt: 'Dark aluminum entrance with sidelights and transoms on a brick apartment building' },
+  { img: 'partition-3', cats: ['partitions'], alt: 'Black-framed glass partition wall under steel roof trusses in a converted industrial building' },
+  { img: 'storefront-3', cats: ['storefront', 'windows'], alt: 'White aluminum double entrance doors and storefront windows with patterned glass' },
+  { img: 'partition-4', cats: ['partitions'], alt: 'Black steel-framed glass partition beside heritage winch machinery' },
+  { img: 'storefront-4', cats: ['storefront'], alt: 'Black aluminum entrance door with sidelight on a stucco apartment building' },
+  { img: 'pvc-5', cats: ['pvc'], alt: 'Dark-framed PVC windows in a row of townhouses' },
+  { img: 'fiberglass-5', cats: ['fiberglass', 'curtainwall'], alt: 'Four-storey apartment building with black windows and a glass curtain wall at street level' },
+  { img: 'partition-5', cats: ['partitions'], alt: 'Tall black-framed glass partition wall in a converted industrial building' },
+  { img: 'storefront-5', cats: ['storefront'], alt: 'Black aluminum storefront entrance with door and transom in a brick building' },
+  { img: 'partition-6', cats: ['partitions'], alt: 'Row of glass-fronted offices with black frames and glass doors' },
+  { img: 'storefront-6', cats: ['storefront', 'windows'], alt: 'White aluminum entrance and windows on a single-storey stone-faced building' },
+  { img: 'pvc-6', cats: ['pvc'], alt: 'Window replacement from a boom lift on a painted brick building' },
+  { img: 'pvc-8', cats: ['pvc'], alt: 'New black-framed windows in a three-storey red brick apartment building' },
+  { img: 'pvc-9', cats: ['pvc'], alt: 'White PVC windows in a three-storey brown brick apartment building' },
+  { img: 'pvc-10', cats: ['pvc'], alt: 'White PVC windows in a row of dark stucco apartment blocks' },
+  { img: 'pvc-11', cats: ['pvc'], alt: 'White PVC windows in a yellow brick apartment building with a canopied entrance' },
+  { img: 'pvc-12', cats: ['pvc'], alt: 'White PVC windows and a black glazed entrance in a brick apartment building' },
+  { img: 'pvc-13', cats: ['pvc'], alt: 'White PVC slider windows along a red brick apartment building' },
+  { img: 'fiberglass-6', cats: ['fiberglass', 'curtainwall'], alt: 'Six floors of black-framed window wall on a mixed-use building' },
+  { img: 'fiberglass-7', cats: ['fiberglass'], alt: 'Black fiberglass windows and arched dormers in a brick heritage house' },
+  { img: 'fiberglass-8', cats: ['fiberglass'], alt: 'Dark-framed fiberglass windows in a six-storey brick heritage building' },
+  { img: 'storefront-7', cats: ['storefront', 'windows'], alt: 'Street-level storefront glazing in a yellow brick heritage building' },
+  { img: 'partition-7', cats: ['partitions'], alt: 'Frameless glass office pods with black channels and a wood surround' },
+  { img: 'storefront-8', cats: ['storefront'], alt: 'Aluminum storefront with entrance door on a metal-clad commercial building' },
+  { img: 'storefront-9', cats: ['storefront'], alt: 'Black aluminum entrance door with sidelights under a steel canopy' },
+  { img: 'storefront-10', cats: ['storefront'], alt: 'Black aluminum entrance door with sidelights in a red brick wall' },
+  { img: 'storefront-11', cats: ['storefront'], alt: 'Black aluminum entrance with sidelights and transom on a brick apartment building' },
+  { img: 'storefront-12', cats: ['storefront'], alt: 'Black aluminum storefront with entrance door and three glass panels' },
+  { img: 'curtainwall-6', cats: ['curtainwall'], alt: 'Street-level glass curtain wall with an aluminum entrance door' },
+  { img: 'curtainwall-7', cats: ['curtainwall'], alt: 'Glass wall with entrance door and glazed overhead door in a concrete facade' },
+  { img: 'doors-1', cats: ['doors'], alt: 'Grey hollow metal door with a vision panel in a brick wall' },
 ];

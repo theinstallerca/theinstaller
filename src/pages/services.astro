@@ -17,7 +17,7 @@ import { services, home } from '../site';
             <h2><a href={`/${s.slug}`}>{s.name}</a></h2>
             <p>{s.text}</p>
             <ul class="checklist">{s.list.map((x) => <li>{x}</li>)}</ul>
-            <p><a href={`/${s.slug}`} class="more">+ More about {s.name.toLowerCase()}</a></p>
+            <p><a href={`/${s.slug}`} class="more">+ More about {s.name[0].toLowerCase() + s.name.slice(1)}</a></p>
             {s.key === 'pvc' && <a href="https://thewindows.ca" class="more" rel="noopener">+ Residential PVC windows: thewindows.ca</a>}
           </div>
         </div>
