@@ -214,6 +214,8 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--g
 .partner-logo { display: inline-block; margin-top: 0.4rem; }
 .partner-logo img { height: 26px; width: auto; display: block; }
 .partner-logo-lg img { height: 34px; }
+.partner-link-lg { text-decoration: none; color: var(--text); font-size: 0.9rem; margin-top: 0.4rem; }
+.partner-link-lg img { height: 22px; }
 .site-footer .brand-mark { display: none; }
 
 /* Language switch */
