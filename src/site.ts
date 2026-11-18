@@ -230,11 +230,26 @@ export const categories = [
   { key: 'curtainwall', label: 'Curtain wall' },
   { key: 'storefront', label: 'Storefront entrances' },
   { key: 'partitions', label: 'Office partitions' },
-  { key: 'windows', label: 'Commercial windows' },
-  { key: 'fiberglass', label: 'Fiberglass windows' },
+  { key: 'windows', label: 'Aluminum windows', tag: 'Commercial windows' },
+  { key: 'fiberglass', label: 'Fiberglass windows', tag: 'Commercial windows' },
   { key: 'pvc', label: 'Apartment PVC windows' },
 ] as const;
 export type CategoryKey = (typeof categories)[number]['key'];
+
+// Photo caption (visible) and alt text (for search engines). `tag` is an extra search term
+// added to the alt text only, e.g. aluminum and fiberglass photos are also "Commercial windows".
+export function photoCaption(cats: readonly CategoryKey[]): string {
+  return cats.map((k) => categories.find((c) => c.key === k)!.label).join(' · ');
+}
+export function photoAlt(cats: readonly CategoryKey[]): string {
+  const tags = new Set<string>();
+  for (const k of cats) {
+    const c = categories.find((x) => x.key === k)!;
+    if ('tag' in c) tags.add(c.tag);
+  }
+  const extra = tags.size ? ` (${[...tags].join(', ')})` : '';
+  return `${photoCaption(cats)}${extra} installed by Theinstaller, Winnipeg`;
+}
 
 export const projects: { img: string; cats: CategoryKey[] }[] = [
   { img: 'curtainwall-1', cats: ['curtainwall'] },
