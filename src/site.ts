@@ -179,7 +179,7 @@ export const home = {
   lead: 'Curtain wall, storefront, office partitions, windows and doors installed for general contractors, suppliers and building owners in Winnipeg and across Manitoba.',
   strip: ['Curtain wall', 'Storefront', 'Office partitions', 'Windows', 'Doors'],
   valuesH: 'How we work',
-  valuesP: 'Installation is all we do on site, and we do it carefully.',
+  valuesP: 'We measure, supply and install, and we do it carefully.',
   values: [
     ['Read the drawings', 'We work from the shop drawings and the schedule, and raise questions before they turn into rework.'],
     ['Built for Manitoba', 'Seals, anchors and tie-ins done for a climate that goes from +35 to −40.'],
