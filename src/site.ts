@@ -278,4 +278,5 @@ export const projects: { img: string; cats: CategoryKey[] }[] = [
   { img: 'fiberglass-7', cats: ['fiberglass'] },
   { img: 'fiberglass-8', cats: ['fiberglass'] },
   { img: 'storefront-7', cats: ['storefront', 'windows'] },
+  { img: 'partition-7', cats: ['partitions'] },
 ];
