@@ -149,7 +149,7 @@ export const services: Service[] = [
     key: 'doors',
     slug: 'hollow-metal-door-installation',
     name: 'Hollow metal doors & hardware',
-    photoCats: [],
+    photoCats: ['doors'],
     h1: 'Hollow metal door and hardware installation in Winnipeg',
     title: 'Hollow Metal Door & Hardware Installation in Winnipeg',
     description: 'Hollow metal frames, doors and finish hardware installed in Winnipeg on commercial and multi-family projects. Labour-only packages welcome.',
@@ -233,6 +233,7 @@ export const categories = [
   { key: 'windows', label: 'Aluminum windows', tag: 'Commercial windows' },
   { key: 'fiberglass', label: 'Fiberglass windows', tag: 'Commercial windows' },
   { key: 'pvc', label: 'Apartment PVC windows' },
+  { key: 'doors', label: 'Steel doors', tag: 'Hollow metal doors' },
 ] as const;
 export type CategoryKey = (typeof categories)[number]['key'];
 
