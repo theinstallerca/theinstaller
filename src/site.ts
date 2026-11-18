@@ -2,6 +2,7 @@
 export const phone = { display: '(204) 230-8145', tel: '+12042308145' };
 export const email = 'info@theinstaller.ca';
 export const city = 'Winnipeg, Manitoba';
+export const facebook = 'https://www.facebook.com/winnipegwindows';
 export const hours = 'Mon–Fri 8:00–17:00';
 
 export const nav = [

@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { contact, phone, email, city, hours } from '../site';
+import { contact, phone, email, city, hours, facebook } from '../site';
 ---
 <Base title="Request a Quote: Winnipeg Glazing Installer" description="Request a quote for curtain wall, storefront, office partition, window or door installation in Winnipeg and Manitoba. Send drawings or a door schedule.">
   <section class="section">
@@ -45,6 +45,7 @@ import { contact, phone, email, city, hours } from '../site';
           <dt>Phone</dt><dd><a href={`tel:${phone.tel}`}>{phone.display}</a></dd>
           <dt>Location</dt><dd>{city}</dd>
           <dt>Hours</dt><dd>{hours}</dd>
+          <dt>Facebook</dt><dd><a href={facebook} target="_blank" rel="noopener">facebook.com/winnipegwindows</a></dd>
           <dt>Drawings</dt><dd>Send drawings and door schedules to <a href={`mailto:${email}`}>{email}</a></dd>
         </dl>
       </div>

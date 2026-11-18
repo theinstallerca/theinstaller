@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import Logo from '../components/Logo.astro';
-import { nav, phone, email, city, hours, services } from '../site';
+import { nav, phone, email, city, hours, services, facebook } from '../site';
 
 interface Props { title: string; description?: string; schemaExtra?: object[]; image?: string; }
 const { title, schemaExtra = [], image } = Astro.props;
@@ -23,7 +23,7 @@ const schema = {
   telephone: phone.tel,
   email,
   image: heroImage,
-  sameAs: ['https://www.facebook.com/winnipegwindows/'],
+  sameAs: [facebook],
   openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '08:00', closes: '17:00' }],
   address: { '@type': 'PostalAddress', addressLocality: 'Winnipeg', addressRegion: 'MB', addressCountry: 'CA' },
   areaServed: [{ '@type': 'City', name: 'Winnipeg' }, { '@type': 'AdministrativeArea', name: 'Manitoba' }],
@@ -101,6 +101,7 @@ const schema = {
             <li><a href={`mailto:${email}`}>{email}</a></li>
             <li><a href={`tel:${phone.tel}`}>{phone.display}</a></li>
             <li>{hours}</li>
+            <li><a href={facebook} target="_blank" rel="noopener">Facebook</a></li>
           </ul>
         </div>
         <div>
