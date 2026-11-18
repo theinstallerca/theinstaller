@@ -289,4 +289,5 @@ export const projects: { img: string; cats: CategoryKey[] }[] = [
   { img: 'storefront-12', cats: ['storefront'] },
   { img: 'curtainwall-6', cats: ['curtainwall'] },
   { img: 'curtainwall-7', cats: ['curtainwall'] },
+  { img: 'doors-1', cats: ['doors'] },
 ];
