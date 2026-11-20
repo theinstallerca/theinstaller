@@ -296,6 +296,8 @@ export const projects: { img: string; cats: CategoryKey[]; alt: string }[] = [
   { img: 'storefront-10', cats: ['storefront'], alt: 'Black aluminum entrance door with sidelights in a red brick wall' },
   { img: 'storefront-11', cats: ['storefront'], alt: 'Black aluminum entrance with sidelights and transom on a brick apartment building' },
   { img: 'storefront-12', cats: ['storefront'], alt: 'Black aluminum storefront with entrance door and three glass panels' },
+  { img: 'storefront-13', cats: ['storefront'], alt: 'Black aluminum vestibule door with sidelites in an apartment building lobby' },
+  { img: 'storefront-14', cats: ['storefront'], alt: 'Black aluminum storefront with a glass entrance door under an apartment building canopy' },
   { img: 'curtainwall-6', cats: ['curtainwall'], alt: 'Street-level glass curtain wall with an aluminum entrance door' },
   { img: 'curtainwall-7', cats: ['curtainwall'], alt: 'Glass wall with entrance door and glazed overhead door in a concrete facade' },
   { img: 'doors-1', cats: ['doors'], alt: 'Grey hollow metal door with a vision panel in a brick wall' },
