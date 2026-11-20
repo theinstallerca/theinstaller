@@ -289,6 +289,8 @@ export const projects: { img: string; cats: CategoryKey[]; alt: string }[] = [
   { img: 'fiberglass-8', cats: ['fiberglass'], alt: 'Dark-framed fiberglass windows in a six-storey brick heritage building' },
   { img: 'storefront-7', cats: ['storefront', 'windows'], alt: 'Street-level storefront glazing in a yellow brick heritage building' },
   { img: 'partition-7', cats: ['partitions'], alt: 'Frameless glass office pods with black channels and a wood surround' },
+  { img: 'partition-8', cats: ['partitions'], alt: 'Black-framed glass office front with a glass door along an open-plan corridor' },
+  { img: 'partition-9', cats: ['partitions'], alt: 'Black-framed glass partition wall with a hinged glass door in an office corridor' },
   { img: 'storefront-8', cats: ['storefront'], alt: 'Aluminum storefront with entrance door on a metal-clad commercial building' },
   { img: 'storefront-9', cats: ['storefront'], alt: 'Black aluminum entrance door with sidelights under a steel canopy' },
   { img: 'storefront-10', cats: ['storefront'], alt: 'Black aluminum entrance door with sidelights in a red brick wall' },
