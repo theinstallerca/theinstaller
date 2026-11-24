@@ -18,6 +18,15 @@ const isService = services.some((s) => '/' + s.slug === current);
 const canonical = `https://theinstaller.ca${current === '/' ? '/' : current}`;
 const heroImage = 'https://theinstaller.ca/images/hero.jpg';
 const ogImage = image ? `https://theinstaller.ca${image}` : heroImage;
+// Site name shown by Google above the result title (read from the home page only).
+const siteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': 'https://theinstaller.ca/#website',
+  name: 'Theinstaller',
+  alternateName: ['The Installer', 'theinstaller.ca'],
+  url: 'https://theinstaller.ca/',
+};
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
@@ -57,6 +66,7 @@ const schema = {
     <meta property="og:locale" content="en_CA" />
     <meta name="twitter:card" content="summary_large_image" />
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    {current === '/' && <script type="application/ld+json" set:html={JSON.stringify(siteSchema)} />}
     {schemaExtra.map((x) => <script type="application/ld+json" set:html={JSON.stringify(x)} />)}
     <link rel="icon" href="/favicon.svg?v=4" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=4" />
